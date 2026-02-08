@@ -25,7 +25,8 @@ body {
 }
 
 .penguin {
-  width: 30vw;
+  width: 140px;      /* adjust */
+  height: auto;
   max-width: 260px;
   margin-bottom: 20px;
   animation: penguin-nod 2s infinite ease-in-out;
