@@ -1,39 +1,57 @@
-body {
+* {
   margin: 0;
-  height: 100vh;
-  background: linear-gradient(#ff758c, #ff7eb3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Arial', sans-serif;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  width: 85%;
-  max-width: 400px;
+body {
+  height: 100vh;
+  background: url("assets/bg.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  color: white;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
 }
 
-h1 {
-  color: #ff4d6d;
-}
-
-p {
+.text {
   font-size: 18px;
-  color: #444;
+  margin-bottom: 20px;
+}
+
+.character {
+  width: 150px;
+  margin: 15px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
 }
 
 button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  font-size: 16px;
-  background: #ff4d6d;
-  color: white;
+  padding: 10px 20px;
   border: none;
-  border-radius: 30px;
+  border-radius: 20px;
+  font-size: 16px;
   cursor: pointer;
+}
+
+#yesBtn {
+  background-color: #ff5c8d;
+  color: white;
+}
+
+#skipBtn {
+  background-color: #ddd;
 }
