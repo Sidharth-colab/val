@@ -1,13 +1,37 @@
-const skipBtn = document.getElementById("skipBtn");
-const yesBtn = document.getElementById("yesBtn");
+const heart = document.getElementById("heart");
+const startText = document.getElementById("startText");
 
-// tease when clicking skip
-skipBtn.addEventListener("click", () => {
-  alert("No skipping 😝 You must press YES!");
-});
+let size = 1;
 
-// go to next page / section
-yesBtn.addEventListener("click", () => {
-  window.location.href = "valentine.html"; 
-  // later this can open your 8 days page
+heart.addEventListener("click", () => {
+ // stop idle heartbeat
+  heart.classList.remove("idle");
+
+// start vibration
+  heart.classList.add("grow-vibrate");
+
+  size += 0.4;
+
+
+  // pass scale value to CSS
+  heart.style.setProperty("--scale", size);
+
+
+  // apply scale (fallback for browsers)
+  heart.style.transform = `scale(${size})`;
+
+  // hide text once heart starts growing
+  if (size > 3.2 && startText) {
+    startText.style.opacity = "0";
+  }
+
+  // explode and move to next page
+  if (size >= 6) {
+    heart.classList.remove("grow-vibrate");
+    heart.classList.add("explode");
+
+    setTimeout(() => {
+      window.location.href = "day2.html";
+    }, 1000);
+  }
 });
