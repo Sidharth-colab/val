@@ -26,7 +26,7 @@ heart.addEventListener("click", () => {
   }
 
   // explode and move to next page
-  if (size >= 6) {
+  if (size >= 8) {
     heart.classList.remove("grow-vibrate");
     heart.classList.add("explode");
 
