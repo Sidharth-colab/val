@@ -38,6 +38,6 @@ heart.addEventListener("click", () => {
 
 // 👇 NEW CODE (do NOT put inside the listener)
 function goNext() {
-  window.location.href = "day3.html";
+  window.location.href = "roseday.html";
 }
 

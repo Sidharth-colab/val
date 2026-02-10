@@ -163,28 +163,16 @@ h1 {
   .big-gif {
     width: 300px;
   }
+}
 
 /* Soft bounce animation for Day 2 text */
 @keyframes soft-bounce {
-  0% {
-    transform: translateY(0);
-  }
-  20% {
-    transform: translateY(-8px);
-  }
-  40% {
-    transform: translateY(0);
-  }
-  60% {
-    transform: translateY(-4px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  20% { transform: translateY(-8px); }
+  40% { transform: translateY(0); }
+  60% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
 }
-
-}
-
 
 .next-btn {
   margin-top: 30px;
@@ -209,6 +197,72 @@ h1 {
 
 .next-btn:active {
   transform: scale(0.95);
+}
+
+
+/* ---------- ROSE DAY (BLENDED) ---------- */
+
+.rose-day {
+  justify-content: space-between;
+  padding: 40px 20px;
+}
+
+/* Title */
+.rose-title {
+  font-size: 38px;
+  color: #ffd6e0;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+  margin-bottom: 20px;
+}
+
+/* Bouquet */
+.rose-img {
+  width: 260px;
+  max-width: 80%;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6));
+}
+
+/* Paragraph */
+.rose-text {
+  color: #fff;
+  font-size: 20px;
+  max-width: 360px;
+  margin-bottom: 25px;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* GIF */
+.rose-gif {
+  width: 220px;
+  margin-bottom: 30px;
+}
+
+/* Mobile tuning */
+@media (max-width: 480px) {
+  .rose-title {
+    font-size: 32px;
+  }
+
+  .rose-text {
+    font-size: 18px;
+  }
+
+  .rose-img {
+  animation: soft-pulse 3s ease-in-out infinite;
+}
+
+@keyframes soft-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+
+  .rose-gif {
+    width: 200px;
+  }
 }
 
 
