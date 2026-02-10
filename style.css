@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-image: url("assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Knewave', sans-serif;  
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 100vh;
+
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.penguin {
+  width: 180px;      /* adjust */
+  height: auto;
+  max-width: 260px;
+  margin-bottom: 20px;
+  animation: penguin-nod 2s infinite ease-in-out;
+}
+
+.game {
+  text-align: center;
+}
+
+#heart {
+  font-size: 80px;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+}
+
+.hint {
+  color: white;
+  font-size: 20px;
+  opacity: 0.85;
+  transition: opacity 0.6s ease;
+}
+h1 {
+  font-size: 38px;
+  letter-spacing: 1px;
+}
+
+
+
+
+/* Explosion animation */
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+.explode {
+  animation: explode 1s forwards;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@keyframes vibrate {
+  0% { transform: translate(0, 0) scale(var(--scale)); }
+  20% { transform: translate(-1px, 1px) scale(var(--scale)); }
+  40% { transform: translate(1px, -1px) scale(var(--scale)); }
+  60% { transform: translate(-1px, -1px) scale(var(--scale)); }
+  80% { transform: translate(1px, 1px) scale(var(--scale)); }
+  100% { transform: translate(0, 0) scale(var(--scale)); }
+}
+
+/* Vibrate while growing */
+.grow-vibrate {
+  animation: vibrate 0.12s infinite;
+}
+
+/* Idle heartbeat */
+.idle {
+  animation: heartbeat 1.4s infinite;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  .text {
+    font-size: 22px;
+  }
+
+  .hint {
+    font-size: 18px;
+  }
+
+  #heart {
+    font-size: 72px;
+  }
+
+  .penguin {
+    width: 220px;
+  }
+}
+
+
+
+
+
+
+/* ---------- DAY 2 STYLES ---------- */
+
+.day2 {
+  text-align: center;
+  padding: 20px;
+}
+
+.big-love {
+  font-family: 'Knewave', sans-serif;
+  font-size: 48px;
+  color: white;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+  margin-bottom: 30px;
+
+  animation: soft-bounce 3s ease-in-out infinite;
+}
+
+.big-gif {
+  width: 260px;
+  max-width: 80vw;
+  height: auto;
+}
+
+/* iPhone & Android tuning */
+@media (max-width: 480px) {
+  .big-love {
+    font-size: 42px;
+  }
+
+  .big-gif {
+    width: 300px;
+  }
+
+/* Soft bounce animation for Day 2 text */
+@keyframes soft-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-8px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+}
+
+
+.next-btn {
+  margin-top: 30px;
+  padding: 14px 36px;
+  font-size: 20px;
+  font-family: 'Knewave', sans-serif;
+
+  color: white;
+  background: rgba(255, 0, 80, 0.85);
+  border: none;
+  border-radius: 30px;
+
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.next-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+}
+
+.next-btn:active {
+  transform: scale(0.95);
+}
+
+
