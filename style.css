@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("assets/bg.jpg");
   background-size: cover;
   background-position: center;
@@ -11,6 +11,7 @@ body {
 .overlay {
   background: rgba(0, 0, 0, 0.4);
   min-height: 100vh;
+  width: 100%;
 
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
@@ -18,7 +19,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .text {
@@ -45,7 +45,10 @@ body {
   cursor: pointer;
   z-index: 2;
   position: relative;
+  --scale: 1;
+  transform: scale(var(--scale)); /* ✅ THIS IS THE KEY */
 }
+
 
 .hint {
   color: white;
@@ -202,7 +205,9 @@ h1 {
 
 /* ---------- ROSE DAY (BLENDED) ---------- */
 
+/* Rose Day layout */
 .rose-day {
+  min-height: 100vh;
   justify-content: space-between;
   padding: 40px 20px;
 }
@@ -239,7 +244,19 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Mobile tuning */
+/* Pulse animation (global) */
+@keyframes soft-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* Apply animation */
+.rose-img {
+  animation: soft-pulse 3s ease-in-out infinite;
+}
+
+/* Mobile tuning only */
 @media (max-width: 480px) {
   .rose-title {
     font-size: 32px;
@@ -249,20 +266,182 @@ h1 {
     font-size: 18px;
   }
 
-  .rose-img {
-  animation: soft-pulse 3s ease-in-out infinite;
-}
-
-@keyframes soft-pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.04); }
-  100% { transform: scale(1); }
-}
-
-
   .rose-gif {
     width: 200px;
   }
 }
+
+/* ---------- PROPOSE DAY (YES + YES) ---------- */
+
+.propose-day {
+  min-height: 100vh;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px 20px;
+}
+
+/* Headline */
+.propose-title {
+  font-size: 38px;
+  color: #ffd1dc;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+/* Paragraph */
+.propose-text {
+  color: white;
+  font-size: 20px;
+  max-width: 360px;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* GIF */
+.propose-gif {
+  width: 240px;
+  display: block;        /* ✅ important */
+  margin: 0 auto;        /* ✅ centers horizontally */
+  animation: float 3s ease-in-out infinite;
+}
+
+.yes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.yes-btn {
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  background: red;
+  color: white;
+  transition: 0.3s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Button wrapper */
+.yes-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* YES buttons */
+.yes-btn {
+  padding: 14px 30px;
+  font-size: 20px;
+  font-family: 'Knewave', sans-serif;
+
+  color: white;
+  background: rgba(255, 0, 80, 0.9);
+  border: none;
+  border-radius: 30px;
+
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.yes-btn:hover {
+  transform: scale(1.05);
+}
+
+.yes-btn:active {
+  transform: scale(0.95);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .propose-title {
+    font-size: 32px;
+  }
+
+  .propose-text {
+    font-size: 18px;
+  }
+
+  .propose-gif {
+  width: 240px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+  .yes-buttons {
+    flex-direction: column;
+  }
+
+/* Dodging button */
+.dodge {
+transition: transform 0.25s ease;  
+position: relative;
+}
+}
+
+/* ---------- CHOCOLATE DAY ---------- */
+
+.chocolate-day {
+  min-height: 100vh;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.choco-img {
+  width: 6000px;
+  max-width: 800px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6));
+  animation: soft-float 3s ease-in-out infinite;
+}
+
+.choco-title {
+  font-size: 38px;
+  color: #ffd6a5;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.choco-text {
+  color: white;
+  font-size: 20px;
+  max-width: 360px;
+  line-height: 1.4;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* Floating animation */
+@keyframes soft-float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .choco-title {
+    font-size: 32px;
+  }
+
+  .choco-text {
+    font-size: 18px;
+  }
+
+  .choco-img {
+    width: 200px;
+  }
+}
+
+
+
 
 

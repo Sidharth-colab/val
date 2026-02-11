@@ -1,43 +1,92 @@
+/*                 Heart Game         */
+
 const heart = document.getElementById("heart");
 const startText = document.getElementById("startText");
 
 let size = 1;
 
-heart.addEventListener("click", () => {
- // stop idle heartbeat
-  heart.classList.remove("idle");
+if (heart) {
+  heart.addEventListener("click", () => {
+    heart.classList.remove("idle");
+    heart.classList.add("grow-vibrate");
 
-// start vibration
-  heart.classList.add("grow-vibrate");
+    size += 0.4;
+    heart.style.setProperty("--scale", size);
 
-  size += 0.4;
+    if (size > 3.2 && startText) {
+      startText.style.opacity = "0";
+    }
+
+    if (size >= 8) {
+      heart.classList.remove("grow-vibrate");
+      heart.classList.add("explode");
+
+      setTimeout(() => {
+        window.location.href = "day2.html";
+      }, 1000);
+    }
+  });
+}
 
 
-  // pass scale value to CSS
-  heart.style.setProperty("--scale", size);
 
+/* NAVIGATION-----------------------*/
 
-  // apply scale (fallback for browsers)
-  heart.style.transform = `scale(${size})`;
-
-  // hide text once heart starts growing
-  if (size > 3.2 && startText) {
-    startText.style.opacity = "0";
-  }
-
-  // explode and move to next page
-  if (size >= 8) {
-    heart.classList.remove("grow-vibrate");
-    heart.classList.add("explode");
-
-    setTimeout(() => {
-      window.location.href = "day2.html";
-    }, 1000);
-  }
-});
-
-// 👇 NEW CODE (do NOT put inside the listener)
 function goNext() {
   window.location.href = "roseday.html";
 }
+
+function goToChocolateDay() {
+  window.location.href = "chocolateday.html";
+}
+
+function goToProposeDay() {
+  window.location.href = "proposeday.html";
+}
+function sayYes() {
+  window.location.href = "chocolateday.html";
+}
+
+
+const dodgeBtn = document.getElementById("dodgeYes");
+
+if (dodgeBtn) {
+  dodgeBtn.addEventListener("mouseenter", moveButton);
+  dodgeBtn.addEventListener("touchstart", moveButton);
+}
+
+function moveButton() {
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 120 - 60;
+  dodgeBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+
+
+
+
+
+/*Buttons on Proposeday------------------*/
+
+const correctBtn = document.querySelector(".correct");
+const wrongBtns = document.querySelectorAll(".wrong");
+
+if (correctBtn) {
+  correctBtn.addEventListener("click", () => {
+    window.location.href = "chocolateday.html";
+  });
+}
+
+wrongBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.innerText = "Wrong 😝";
+    btn.style.background = "gray";
+
+    // optional move effect
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 120 - 60;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+});
+
 
