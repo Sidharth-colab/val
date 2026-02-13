@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hug Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="hug-day">
+<div class="container">
+
+    <h1>Happy Hug Day </h1>
+
+    <p class="subtitle">
+        Press and hold to send me hug and promise  to hug me every day in our life(Mondeyum ithepole ketipidikaneyy pona)
+    </p>
+
+    <!-- GIF before hold -->
+    <img src="assets/hugbefore.gif" class="hug-img" id="beforeGif">
+
+    <div class="hold-wrapper">
+        <button id="holdBtn" class="hold-btn">
+            Hold to Hug 💞
+            <span class="progress"></span>
+        </button>
+    </div>
+
+    <p id="hugMessage" class="hug-message hidden">
+        Hug Delivered 🤍
+    </p>
+
+     <!-- GIF after hold (hidden initially) -->
+    <img src="assets/hugafter.gif" class="hug-img hidden" id="afterGif">
+
+    <button id="nextBtn" class="next-btn hidden" onclick="goToKissDay()">
+    Next 💖
+</button>
+
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
