@@ -165,94 +165,9 @@ function launchConfetti() {
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
 
-  /* =========================
-     TYPEWRITER
-  ========================== */
 
-  const typewriter = document.getElementById("typewriter");
 
-  if (typewriter) {
-    const text = "I Love You Forever ❤️";
-    let index = 0;
-
-    function typeEffect() {
-      if (index < text.length) {
-        typewriter.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 100);
-      }
-    }
-
-    typeEffect();
-  }
-
-  /* =========================
-     PUZZLE GAME
-  ========================== */
-
-  const puzzleContainer = document.getElementById("puzzle");
-  if (!puzzleContainer) return;
-
-  const size = 3;
-  let tiles = [];
-
-  function createPuzzle() {
-    tiles = [];
-    for (let i = 0; i < size * size; i++) {
-      tiles.push(i);
-    }
-
-    tiles.sort(() => Math.random() - 0.5);
-    renderPuzzle();
-  }
-
-  function renderPuzzle() {
-    puzzleContainer.innerHTML = "";
-
-    tiles.forEach((tile, index) => {
-      const tileDiv = document.createElement("div");
-      tileDiv.classList.add("tile");
-
-      const row = Math.floor(tile / size);
-      const col = tile % size;
-
-      tileDiv.style.backgroundPosition =
-        `-${col * 100}px -${row * 100}px`;
-
-      tileDiv.addEventListener("click", () => swapTile(index));
-
-      puzzleContainer.appendChild(tileDiv);
-    });
-  }
-
-  function swapTile(index) {
-    const lastIndex = tiles.length - 1;
-
-    if (index !== lastIndex) {
-      [tiles[index], tiles[lastIndex]] =
-        [tiles[lastIndex], tiles[index]];
-    }
-
-    renderPuzzle();
-    checkWin();
-  }
-
-  function checkWin() {
-    for (let i = 0; i < tiles.length; i++) {
-      if (tiles[i] !== i) return;
-    }
-
-    const video = document.getElementById("loveVideo");
-    if (video) {
-      video.style.display = "block";
-      video.play();
-    }
-  }
-
-  createPuzzle();
-});
 
 
 document.addEventListener("DOMContentLoaded", function () {

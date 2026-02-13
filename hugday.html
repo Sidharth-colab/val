@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hug Day</title>
-<link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Hug Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="hug-day">
 
-<body>
-<div class="hug-day">
-<div class="container">
+    <div class="hug-container">
+        <h1>Happy Hug Day</h1>
+        <p>Press and hold to send me hug and promise to hug me every day in our life (Mondeyum ithepole ketipidikaneyy pona)</p>
 
-    <h1>Happy Hug Day </h1>
+        <img src="assets/hugbefore.gif" alt="Hug Before" class="hug-img" id="beforeGif">
 
-    <p class="subtitle">
-        Press and hold to send me hug and promise  to hug me every day in our life(Mondeyum ithepole ketipidikaneyy pona)
-    </p>
+        <div class="hold-wrapper">
+            <button class="hold-btn" id="holdBtn">
+                Hold to Hug
+                <div class="progress"></div>
+            </button>
+        </div>
 
-    <!-- GIF before hold -->
-    <img src="assets/hugbefore.gif" class="hug-img" id="beforeGif">
+        <img src="assets/hugafter.gif" alt="Hug After" class="hug-img hidden" id="afterGif">
 
-    <div class="hold-wrapper">
-        <button id="holdBtn" class="hold-btn">
-            Hold to Hug 💞
-            <span class="progress"></span>
-        </button>
+        <button id="nextBtn">Next</button>
+
     </div>
 
-    <p id="hugMessage" class="hug-message hidden">
-        Hug Delivered 🤍
-    </p>
-
-     <!-- GIF after hold (hidden initially) -->
-    <img src="assets/hugafter.gif" class="hug-img hidden" id="afterGif">
-
-    <button id="nextBtn" class="next-btn hidden" onclick="goToKissDay()">
-    Next 💖
-</button>
-
-
-</div>
-</div>
-
-<script src="script.js"></script>
+    <script src="hugday.js"></script>
 </body>
 </html>

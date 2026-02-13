@@ -7,93 +7,37 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="kissday.css">
 </head>
+
 <body>
 
 <div class="overlay hug-day">
-
   <div class="container">
     <h1>Happy Kiss Day Baby</h1>
-    <p class="subtitle">Even through a screen,when we call your kisses still reach my heart.   Umma thaa Ponaa =Tap the GIF to send kisses!</p>
+
+    <p class="subtitle">
+      Even through a screen, when we call your kisses still reach my heart.
+      Umma thaa Ponaa = Tap the GIF to send kisses!
+    </p>
 
     <div id="kissWrapper">
-      <img src="assets/kissbefore.gif" id="kissGif" class="kiss-gif" alt="Kiss GIF before">
-      <img src="assets/kissafter.gif" id="afterGif" class="kiss-gif hidden" alt="Kiss GIF after">
+      <img src="assets/kissbefore.gif" id="kissGif" class="kiss-gif" alt="Kiss before">
+      <img src="assets/kissafter.gif" id="afterGif" class="kiss-gif hidden" alt="Kiss after">
     </div>
 
     <p>Kisses sent: <span id="counter">0</span> 💋</p>
 
-    <button id="nextBtn" class="next-btn hidden">Next 💖</button>
+    <button id="kissnextBtn" class="hidden">Next</button>
   </div>
 
-  <!-- Flying kisses -->
+  <!-- Flying kisses container -->
   <div id="kissContainer"></div>
-
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const kissWrapper = document.getElementById("kissWrapper");
-  const kissGif = document.getElementById("kissGif");
-  const afterGif = document.getElementById("afterGif");
-  const counterEl = document.getElementById("counter");
-  const nextBtn = document.getElementById("nextBtn");
-  const kissContainer = document.getElementById("kissContainer");
 
-  let kisses = 0;
-  const goal = 10;
 
-  function spawnKiss(x, y) {
-    const kiss = document.createElement("div");
-    kiss.classList.add("flying-kiss");
-    kiss.style.left = x + "px";
-    kiss.style.top = y + "px";
-    kiss.innerText = "💋";
-
-    kissContainer.appendChild(kiss);
-
-    setTimeout(() => kiss.remove(), 2000);
-  }
-
-  function handleTap(e) {
-    kisses++;
-    counterEl.innerText = kisses;
-
-    let x, y;
-
-    if (e.type.startsWith("touch")) {
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
-    } else {
-      x = e.clientX;
-      y = e.clientY;
-    }
-
-    // spawn 2 flying kisses per tap
-    spawnKiss(x, y);
-    spawnKiss(x + 20, y - 10);
-    spawnKiss(x - 20, y - 10);
-
-    if (kisses >= goal) {
-      kissGif.classList.add("hidden");
-      afterGif.classList.remove("hidden");
-      afterGif.classList.add("bounce");
-      nextBtn.classList.remove("hidden");
-    }
-  }
-
-  kissWrapper.addEventListener("click", handleTap);
-  kissWrapper.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-    handleTap(e);
-  });
-
-  nextBtn.addEventListener("click", function() {
-    window.location.href = "valentinesday.html";
-  });
-});
-</script>
+<!-- Kiss Day script -->
+<script src="kissday.js"></script>
 
 </body>
 </html>

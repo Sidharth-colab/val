@@ -673,92 +673,171 @@ position: relative;
 /*--------------------hug day------------------------------*/
 
 
-.hug-day {
+/* ------------------- COMMON STYLES ------------------- */
+
+body {
+    margin: 0;
     min-height: 100vh;
+    background-image: url("assets/bg.jpg"); /* original background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Knewave', sans-serif; /* original font */
+    color: white;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
-
-.container {
-    text-align: center;
-    color: white;
+.hug-container {
+    max-width: 600px;
+    padding: 20px;
 }
 
-h1 {
+.hug-container h1 {
     font-size: 48px;
     margin-bottom: 10px;
 }
 
-.subtitle {
-    margin-bottom: 20px;
+.hug-container p {
     font-size: 18px;
+    margin-bottom: 20px;
 }
 
 .hug-img {
     width: 250px;
+    max-width: 80vw;
+    height: auto;
     margin: 20px 0;
-}
-
-.hold-btn {
-    position: relative;
-    overflow: hidden;
-    padding: 14px 40px;
-    font-size: 18px;
-    border-radius: 30px;
-    border: none;
-    background: hotpink;
-    color: white;
-    cursor: pointer;
-}
-
-.progress {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100%;
-    width: 0%;
-    background: rgba(255,255,255,0.3);
-    transition: width 0.1s linear;
-}
-
-.hug-message {
-    margin-top: 20px;
-    font-size: 22px;
-}
-
-.confetti {
-    position: fixed;
-    top: -10px;
-    width: 8px;
-    height: 8px;
-    background: white;
-    opacity: 0.8;
-    animation: fall linear forwards;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh) rotate(720deg);
-    }
-}
-
-.next-btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    font-size: 16px;
-    border-radius: 25px;
-    border: none;
-    background: white;
-    color: hotpink;
-    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
 
 .hidden {
     display: none;
 }
+
+/* Hold button wrapper */
+.hold-wrapper {
+    display: flex;
+    justify-content: center;  /* centers horizontally */
+    margin: 20px 0;           /* some spacing */
+}
+
+.hold-btn {
+    position: relative;
+    width: 100%;
+    padding: 14px 0;
+    font-size: 18px;
+    background: hotpink;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    color: white;
+    font-family: 'Knewave', sans-serif;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+}
+
+.hold-btn:hover {
+    transform: scale(1.05);
+}
+
+.hold-btn:active {
+    transform: scale(0.95);
+}
+
+.hold-btn .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 25px;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+#nextBtn {
+    display: none; /* hidden initially */
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    font-size: 20px;
+    font-family: 'Knewave', cursive;
+    color: white;
+    background: rgba(255, 0, 80, 0.85);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+#nextBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.5);
+}
+
+#nextBtn:active {
+    transform: scale(0.95);
+}
+
+/* Confetti */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .hug-container h1 {
+        font-size: 36px;
+    }
+
+    .hug-container p {
+        font-size: 16px;
+    }
+
+    .hug-img {
+        width: 200px;
+    }
+
+    .hold-btn {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+     
+    .hidden {
+    display: none;
+    }
+
+    #nextBtn {
+  display: none; /* ensure hidden at start */
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+}
+}
+
 
 
 
@@ -810,7 +889,37 @@ h1 {
   100% { transform: translate(-50%, -50%) translateY(-160px) scale(2); opacity: 0; }
 }
 
+.hidden {
+    display: none !important; /* ensures it hides no matter what */
+}
 
+
+#kissnextBtn {
+    display: block; /* will be shown via JS */
+    margin: 30px auto 0;
+    padding: 14px 32px;
+    font-size: 20px;
+    font-family: 'Knewave', cursive;
+    color: white;
+    background: rgba(255, 0, 80, 0.6); /* semi-transparent */
+    border: 2px solid rgba(255,255,255,0.3); /* subtle border */
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* soft shadow */
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#kissnextBtn:hover {
+    background: rgba(255, 0, 80, 0.85);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+#kissnextBtn:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
 
 
 
