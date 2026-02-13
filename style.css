@@ -142,9 +142,10 @@ h1 {
 
 .big-love {
   font-family: 'Knewave', sans-serif;
-  font-size: 30px;
+  font-size: clamp(24px, 8vw, 50px); /* scales between 24px and 50px */
   color: white;
   text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+  word-break: break-word; /* ensures long text wraps */
   margin-bottom: 30px;
 
   animation: soft-bounce 3s ease-in-out infinite;
@@ -423,7 +424,7 @@ position: relative;
 
 /* Floating animation */
 .big-chocolate {
-  width: 600px;              /* adjust size if needed */
+  width: 400px;              /* adjust size if needed */
   animation: floatChoco 3s ease-in-out infinite;
 }
 
@@ -1087,4 +1088,5 @@ body {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
+
 
