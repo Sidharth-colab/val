@@ -2,11 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
-
   <title>Happy Valentine's Day</title>
+  <link href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,28 +17,31 @@
     <img src="assets/romantic.gif" class="valentine-gif" alt="Love GIF">
 
     <p class="love-message">
-  Before you unlock your surprise…  
-  I just want you to know that you are the best thing that ever happened to me.  
-  I will love you when you’re happy and even more when you’re not. I’ll love you when you’re sick and when you’re healthy, when we argue and when we fall asleep. No matter the moment, no matter the mood — I choose you. Always and forever.
+      Before you unlock your surprise…  
+      I just want you to know that you are the best thing that ever happened to me.  
+      I will love you when you’re happy and even more when you’re not. I’ll love you when you’re sick and when you’re healthy, when we argue and when we fall asleep. No matter the moment, no matter the mood — I choose you. Always and forever.
+      <br><br>
+      Happy Valentine’s Day, ente shundapiii ahn, ummaaaaa.
+    </p>
 
-Happy Valentine’s Day, ente shundapiii ahn, ummaaaaa.
-</p>
-
-
-    <h3 class="puzzle-title">Solve the Puzzle to Unlock a Surprise you wanted 💌  enta kochin kazhivendaan nokateyy😝 </h3>
+    <h3 class="puzzle-title">
+      Solve the Puzzle to Unlock a Surprise 💌
+    </h3>
 
     <div id="puzzle"></div>
 
-    <video id="loveVideo" src="assets/love.mp4" controls></video>
+    <video id="loveVideo" class="hidden" controls>
+      <source src="assets/love.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
   </div>
-   
-<!-- Surprise Overlay -->
-  <div id="surpriseOverlay" class="surprise-overlay">
 
-    <div class="big-love">I LOVE YOUUUUUUUUUUUUUUUUUU ❤️</div>
+  <!-- Surprise Overlay -->
+  <div id="surpriseOverlay">
+    <div class="big-love">I LOVE YOUUUUUUUUUU ❤️</div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="valentinesday.js"></script>
 </body>
 </html>
