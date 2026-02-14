@@ -21,14 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let tiles = [];
 
   function createPuzzle() {
-    tiles = [];
-    for (let i = 0; i < size * size; i++) {
-      tiles.push(i);
-    }
-    tiles.sort(() => Math.random() - 0.5);
-    renderPuzzle();
+  tiles = [];
+  for (let i = 0; i < size * size; i++) {
+    tiles.push(i);
   }
 
+  // Fisher-Yates shuffle
+  for (let i = tiles.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+  }
   function renderPuzzle() {
     puzzleContainer.innerHTML = "";
     tiles.forEach((tile, index) => {
@@ -37,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const row = Math.floor(tile / size);
       const col = tile % size;
-      tileDiv.style.backgroundPosition = `-${col * 100}px -${row * 100}px`;
+      tileDiv.style.backgroundPosition = `${(col / (size - 1)) * 100}% ${(row / (size - 1)) * 100}%`;
+
 
       tileDiv.addEventListener("click", () => swapTile(index));
 
@@ -66,12 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function showSurprise() {
     // Show overlay text
     const overlay = document.getElementById("surpriseOverlay");
-    overlay.classList.add("show");
+    if (overlay) overlay.classList.add("show");
 
     // Play video
     const video = document.getElementById("loveVideo");
-    video.classList.remove("hidden");
-    video.play();
+video.classList.remove("hidden");
+video.muted = true;     // required for autoplay on Safari
+video.play();
+
 
     // Launch confetti
     launchConfetti();
@@ -102,3 +107,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   createPuzzle();
 });
+
